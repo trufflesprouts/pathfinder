@@ -124,7 +124,6 @@ const Pathfinder = (function () {
         gridCells[i].addEventListener('mousedown', function(ev) {
           State.mouseHeld.status = true;
           State.mouseHeld.type = getCellType(gridCells[i]);
-          console.log(State.mouseHeld.type);
           const StartOrEnd = isStartOrEnd(gridCells[i]);
           if (StartOrEnd === "start") {
             State.startMoveable = true;
@@ -248,7 +247,6 @@ const Pathfinder = (function () {
     const animateSpeed = path.length > 15 ? 20 : 70;
     let i = 0;
     animateInterval = setInterval(() => {
-      console.log("bo");
       if (i >= path.length - 1) {
         clearInterval(animateInterval);
         return;
@@ -327,7 +325,6 @@ const Pathfinder = (function () {
       } else if (newLocation.status === 'Valid') {
         queue.push(newLocation);
       }
-      // console.log(queue[0]);
     }
     return false;
   }

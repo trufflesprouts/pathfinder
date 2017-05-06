@@ -123,7 +123,6 @@ var Pathfinder = function () {
         gridCells[i].addEventListener('mousedown', function (ev) {
           State.mouseHeld.status = true;
           State.mouseHeld.type = getCellType(gridCells[i]);
-          console.log(State.mouseHeld.type);
           var StartOrEnd = isStartOrEnd(gridCells[i]);
           if (StartOrEnd === "start") {
             State.startMoveable = true;
@@ -226,12 +225,14 @@ var Pathfinder = function () {
       var endPoint = State.end.slice();
       var path = findPath(world, startPoint, endPoint);
       if (!path) {
-        if (alertEl.style.display == "none") {
-          alertEl.style.display = "block";
-          setInterval(function () {
-            alertEl.style.display = "none";
-          }, 3000);
-        }
+        // if (alertEl.style.display == "none") {
+        alertEl.style.animation = 'reveal 3s';
+        // alertEl.style.display = "block";
+        setInterval(function () {
+          alertEl.style.animation = 'none';
+          //   alertEl.style.display = "none";
+        }, 3000);
+        // }
         return;
       }
       State.searching = true;
@@ -247,7 +248,6 @@ var Pathfinder = function () {
     var animateSpeed = path.length > 15 ? 20 : 70;
     var i = 0;
     animateInterval = setInterval(function () {
-      console.log("bo");
       if (i >= path.length - 1) {
         clearInterval(animateInterval);
         return;
@@ -326,7 +326,6 @@ var Pathfinder = function () {
       } else if (newLocation.status === 'Valid') {
         queue.push(newLocation);
       }
-      // console.log(queue[0]);
     }
     return false;
   }
