@@ -225,14 +225,12 @@ var Pathfinder = function () {
       var endPoint = State.end.slice();
       var path = findPath(world, startPoint, endPoint);
       if (!path) {
-        // if (alertEl.style.display == "none") {
-        alertEl.style.animation = 'reveal 3s';
-        // alertEl.style.display = "block";
-        setInterval(function () {
-          alertEl.style.animation = 'none';
-          //   alertEl.style.display = "none";
-        }, 3000);
-        // }
+        if (!alertEl.classList.contains("visible")) {
+          alertEl.classList.add("visible");
+          setTimeout(function () {
+            alertEl.classList.remove("visible");
+          }, 2000);
+        }
         return;
       }
       State.searching = true;

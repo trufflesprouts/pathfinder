@@ -226,11 +226,11 @@ const Pathfinder = (function () {
       const endPoint = State.end.slice();
       let path = findPath(world, startPoint, endPoint);
       if (!path) {
-        if (alertEl.style.display == "none") {
-          alertEl.style.display = "block";
-          setInterval(() => {
-            alertEl.style.display = "none";
-          }, 3000);
+        if (!alertEl.classList.contains("visible")) {
+          alertEl.classList.add("visible");
+          setTimeout(function () {
+            alertEl.classList.remove("visible");
+          }, 2000);
         }
         return;
       }
